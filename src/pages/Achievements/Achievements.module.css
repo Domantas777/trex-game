@@ -1,0 +1,32 @@
+.container {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px;
+  width: auto;
+  height: auto;
+  background: linear-gradient(to left top, gray, white);
+}
+
+.title {
+  font-family: arial;
+  font-size: 60px;
+  color: black;
+  font-style: italic;
+}
+
+.box {
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  background: linear-gradient(to left top, #000, gray) fixed;
+  border-radius: 10px;
+  width: 1000px;
+  height: auto;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
