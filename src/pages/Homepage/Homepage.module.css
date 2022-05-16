@@ -1,0 +1,58 @@
+.container {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to left top, gray, white) fixed;
+}
+
+.background {
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to left top, gray, white) fixed;
+  padding: 100px 0px;
+}
+
+.title {
+  font-family: arial;
+  font-size: 100px;
+  color: gray;
+}
+
+.image {
+  height: 80px;
+  width: 80px;
+  margin-right: 10px;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  align-items: center;
+  padding: auto;
+  margin-top: 100px;
+  width: 100%;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 50px;
+  padding: 200px 0px;
+}
+
+.button {
+  width: 425px;
+  padding: 10px;
+  margin-top: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  outline: none;
+  background: linear-gradient(to left top, #000, gray) fixed;
+  border-radius: 10px;
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  transition: all 0.5s;
+  text-decoration: none;
+}
