@@ -2,24 +2,17 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to left top, gray, white) fixed;
-}
-
-.background {
-  min-height: 100%;
-  min-width: 1024px;
-  width: 100%;
-  height: auto;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: linear-gradient(to left top, gray, white) fixed;
-  padding: 100px 0px;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0px;
+  width: -webkit-fill-available;
+  height: -webkit-fill-available;
+  background: linear-gradient(to left top, gray, white);
 }
 
 .title {
   font-family: arial;
-  font-size: 100px;
+  font-size: 60px;
   color: gray;
 }
 
@@ -32,21 +25,18 @@
 .links {
   display: flex;
   flex-direction: column;
-  position: absolute;
   align-items: center;
-  padding: auto;
-  margin-top: 100px;
+  margin-top: 50px;
   width: 100%;
   font-family: "Times New Roman", Times, serif;
   font-size: 50px;
-  padding: 200px 0px;
 }
 
 .button {
-  width: 425px;
+  width: 300px;
   padding: 10px;
   margin-top: 20px;
-  font-size: 50px;
+  font-size: 30px;
   font-weight: bold;
   outline: none;
   background: linear-gradient(to left top, #000, gray) fixed;

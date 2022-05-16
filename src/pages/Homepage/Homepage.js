@@ -4,7 +4,7 @@ import styles from "./Homepage.module.css";
 function HomePage() {
   return (
     <div className={styles.container}>
-      <div className={styles.background}>
+      <div>
         <img
           className={styles.image}
           src="https://play-lh.googleusercontent.com/i-0HlK6I-K5ZVI28HFa4iXz0T22Mg2WjQ4gMsEYvqmSNdifp2NE41ZiaUCavmbIimQ"

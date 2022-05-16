@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import '../App.css';
-import default_100_percent from '../assets/default_100_percent/100-offline-sprite.png';
-import default_200_percent from '../assets/default_200_percent/200-offline-sprite.png';
-import Runner from '../utils/Runner';
+import './Play.css';
+import default_100_percent from '../../assets/default_100_percent/100-offline-sprite.png';
+import default_200_percent from '../../assets/default_200_percent/200-offline-sprite.png';
+import Runner from '../../utils/Runner';
 
-function HomePage() {
+function Play() {
 
     useEffect(() => {
         document.onkeydown = function (evt) {
@@ -36,4 +36,4 @@ function HomePage() {
     )
 }
 
-export default HomePage;
+export default Play;
