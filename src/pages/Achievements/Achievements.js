@@ -3,29 +3,104 @@ import AchievementsBox from "../../components/AchievementBox/AchievementBox.js";
 import { Runner } from "../../components/Runner";
 import AchievementLocked from "../../assets/Achievement-locked.png";
 import AchievementUnlocked from "../../assets/Achievement-unlocked.jpg";
-import * as React from "react";
+import React, { useContext } from "react";
+import { GameOverContext } from "../../hooks/gameOverContext";
 
 function Achievements() {
-  console.log(Runner.gameOverCounter);
+  const { gameOverCounter, setGameOverCounter, highScore, setHighScore } =
+    useContext(GameOverContext);
+  console.log(gameOverCounter, highScore);
   return (
     <div className={styles.container}>
       <span className={styles.title}>Achievements</span>
       <div className={styles.box}>
-        <AchievementsBox
+        {/* <AchievementsBox
           title="Newbie"
           text="Play the game 1 times"
-          img={
-            Runner.gameOverCounter >= 1
-              ? { AchievementUnlocked }
-              : { AchievementLocked }
+          image={
+            gameOverCounter >= 1
+              ? "https://cdn-icons-png.flaticon.com/512/47/47799.png?w=360"
+              : "https://cdn3.iconfinder.com/data/icons/symbol-black-common-2/32/star-lock-512.png"
           }
-        />
-        <AchievementsBox title="Advanced" text="Play the game 5 times" />
-        <AchievementsBox title="Pro" text="Play the game 10 times" />
-        <AchievementsBox title="True gamer" text="Get a highscore of 1000" />
-        <AchievementsBox title="bruh" text="eat my ass" />
-        <AchievementsBox title="bruh" text="eat my ass" />
-        <AchievementsBox title="bruh" text="eat my ass" />
+        /> */}
+        {gameOverCounter >= 1 ? (
+          <AchievementsBox
+            title="Newbie"
+            text="Play the game for the first time"
+            image={AchievementUnlocked}
+          />
+        ) : (
+          <AchievementsBox
+            title="???"
+            text="LOCKED"
+            image={AchievementLocked}
+          />
+        )}
+        {gameOverCounter >= 5 ? (
+          <AchievementsBox
+            title="Advanced"
+            text="Play the game 5 times"
+            image={AchievementUnlocked}
+          />
+        ) : (
+          <AchievementsBox
+            title="???"
+            text="LOCKED"
+            image={AchievementLocked}
+          />
+        )}
+        {gameOverCounter >= 10 ? (
+          <AchievementsBox
+            title="Pro"
+            text="Play the game 10 times"
+            image={AchievementUnlocked}
+          />
+        ) : (
+          <AchievementsBox
+            title="???"
+            text="LOCKED"
+            image={AchievementLocked}
+          />
+        )}
+        {highScore >= 1000 ? (
+          <AchievementsBox
+            title="Keep it up!"
+            text="Get a high score of 1000"
+            image={AchievementUnlocked}
+          />
+        ) : (
+          <AchievementsBox
+            title="???"
+            text="LOCKED"
+            image={AchievementLocked}
+          />
+        )}
+        {highScore >= 2000 ? (
+          <AchievementsBox
+            title="You're nearly there!"
+            text="Get a high score of 2000"
+            image={AchievementUnlocked}
+          />
+        ) : (
+          <AchievementsBox
+            title="???"
+            text="LOCKED"
+            image={AchievementLocked}
+          />
+        )}
+        {highScore >= 3000 ? (
+          <AchievementsBox
+            title="Professional runner"
+            text="Get a high score of 3000"
+            image={AchievementUnlocked}
+          />
+        ) : (
+          <AchievementsBox
+            title="???"
+            text="LOCKED"
+            image={AchievementLocked}
+          />
+        )}
       </div>
     </div>
   );
