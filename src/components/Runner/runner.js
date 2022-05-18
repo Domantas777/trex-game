@@ -50,13 +50,19 @@ class Runner extends React.Component {
   options;
   updatePending;
 
-  constructor(container, options) {
+  setGameOverCounter;
+  setHighScore;
+
+  constructor(container, options, gameOverContext) {
     super(container, options);
     this.outerContainerEl = container;
     this.config = {
       ...this.config,
       ...options,
     };
+    this.setGameOverCounter = gameOverContext.setGameOverCounter;
+    this.gameOverCounter = gameOverContext.gameOverCounter;
+    this.setHighScore = gameOverContext.setHighScore;
   }
 
   async init() {
@@ -199,10 +205,10 @@ class Runner extends React.Component {
     this.tRex.crash();
     this.restartLock = performance.now(); // ms
     this.status = STATUS.CRASH;
-    this.distanceMeter.updateHighScore();
+    this.distanceMeter.updateHighScore(this.setHighScore);
     this.drawGameOverPanel();
     this.gameOverCounter++;
-    console.log(this.gameOverCounter);
+    this.setGameOverCounter(this.gameOverCounter);
   }
 
   drawBackGround() {

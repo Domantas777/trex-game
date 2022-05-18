@@ -1,12 +1,12 @@
 import Game from '../Game'
 import styles from './styles.module.css'
 
-function GameContainer() {
+function GameContainer(props) {
   return (
     <div className={styles.container}>
       <h2 align="center"> Press Space Bar to Start </h2>
       <div>
-        <Game />
+        <Game {...props} />
       </div>
       <div />
     </div>

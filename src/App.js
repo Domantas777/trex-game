@@ -8,8 +8,9 @@ import { useState } from "react";
 
 function App() {
   const [gameOverCounter, setGameOverCounter] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   return (
-    <GameOverContext.Provider value={{ gameOverCounter, setGameOverCounter }}>
+    <GameOverContext.Provider value={{ gameOverCounter, setGameOverCounter, highScore, setHighScore }}>
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />

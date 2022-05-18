@@ -17,7 +17,7 @@ class App extends React.Component {
       width: this.outerContainerEl.offsetWidth,
     }
     const { Runner } = await import('../Runner')
-    const runner = new Runner(this.outerContainerEl, config)
+    const runner = new Runner(this.outerContainerEl, config, this.props);
     runner.init()
   }
 

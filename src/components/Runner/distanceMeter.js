@@ -37,11 +37,12 @@ class DistanceMeter extends React.Component {
     this.draw()
   }
 
-  updateHighScore() {
+  updateHighScore(setHighScore) {
     if (this.score > this.highestScore) {
-      this.highestScore = this.score
+      this.highestScore = this.score;
+      setHighScore(this.highestScore);
     }
-    this.draw()
+    this.draw();
   }
 
   drawScore(score = 0, x = 0, y = 0) {
