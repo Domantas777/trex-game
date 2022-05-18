@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./Homepage.module.css";
+import trex from '../../assets/tRex.png';
 
 function HomePage() {
   return (
@@ -7,7 +8,7 @@ function HomePage() {
       <div>
         <img
           className={styles.image}
-          src="https://play-lh.googleusercontent.com/i-0HlK6I-K5ZVI28HFa4iXz0T22Mg2WjQ4gMsEYvqmSNdifp2NE41ZiaUCavmbIimQ"
+          src={trex}
           alt="t-rex"
         ></img>
         <span className={styles.title}>T-Rex Game</span>

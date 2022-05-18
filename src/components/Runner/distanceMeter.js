@@ -1,7 +1,7 @@
 import * as React from 'react'
 import loadImg from './getImage'
 
-import scoreNumberImg from './images/score_number.png'
+import scoreNumberImg from '../../assets/score_number.png'
 
 class DistanceMeter extends React.Component {
   canvas;

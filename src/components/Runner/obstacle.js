@@ -1,7 +1,7 @@
 import Sprite from './sprite'
 
-import cactusLargeImg from './images/cactus_large.png'
-import cactusSmallImg from './images/cactus_small.png'
+import cactusLargeImg from '../../assets/cactus_large.png'
+import cactusSmallImg from '../../assets/cactus_small.png'
 
 class Obstacle extends Sprite {
   groundY;

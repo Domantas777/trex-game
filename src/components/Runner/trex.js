@@ -1,10 +1,10 @@
 import Sprite from './sprite'
 
-import defaultTrexImg from './images/tRex.png'
-import tRexCrashImg from './images/trex_crash.png'
-import tRexDuck1Img from './images/trex_duck_1.png'
-import tRexDuck2Img from './images/trex_duck_2.png'
-import tRexFistFrameImg from './images/trex_first_frame.png'
+import defaultTrexImg from '../../assets/tRex.png'
+import tRexCrashImg from '../../assets/trex_crash.png'
+import tRexDuck1Img from '../../assets/trex_duck_1.png'
+import tRexDuck2Img from '../../assets/trex_duck_2.png'
+import tRexFistFrameImg from '../../assets/trex_first_frame.png'
 import jumpSound from './sounds/button-press.mp3'
 import hitSound from './sounds/hit.mp3'
 

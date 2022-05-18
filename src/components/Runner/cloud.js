@@ -1,5 +1,5 @@
 import { random } from 'lodash'
-import defaultCloudImg from './images/cloud.png'
+import defaultCloudImg from '../../assets/cloud.png'
 import Sprite from './sprite'
 
 class Cloud extends Sprite {

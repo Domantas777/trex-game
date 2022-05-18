@@ -5,8 +5,8 @@ import getImg, { loadImages } from './getImage'
 import GroundManager from './groundManager'
 import Trex from './trex'
 
-import gameoverTextImg from './images/gameover_text.png'
-import restartButtonImg from './images/restart_button.png'
+import gameoverTextImg from '../../assets/gameover_text.png'
+import restartButtonImg from '../../assets/restart_button.png'
 
 export const STATUS = {
   START: Symbol('START'),
@@ -40,6 +40,7 @@ class Runner extends React.Component {
     ACCELERATION_INTERVAL: 1,
     MAX_SPEED: 800,
     KEYCODE_JUMP: 'Space',
+    KEYCODE_UP: 'ArrowUp',
     RESTART_BUTTON_SRC: restartButtonImg,
     GAMEOVER_TEXT_SRC: gameoverTextImg
   }
@@ -93,9 +94,11 @@ class Runner extends React.Component {
   }
 
   onKeyDown(e) {
-    const { code } = e
+    const { code } = e;
+    console.log(code);
     switch (code) {
       case this.config.KEYCODE_JUMP:
+      case this.config.KEYCODE_UP:
         if (
           this.status !== STATUS.RUNNING &&
           performance.now() - this.restartLock > 500

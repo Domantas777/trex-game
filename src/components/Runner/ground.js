@@ -1,4 +1,4 @@
-import defaultImg from './images/ground.png'
+import defaultImg from '../../assets/ground.png'
 import Sprite from './sprite'
 
 class Ground extends Sprite {
