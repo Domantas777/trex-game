@@ -10,6 +10,7 @@ import { GameOverContext } from "./hooks/gameOverContext";
 import { useEffect, useState } from "react";
 
 function App() {
+  const [userSkins, setUserSkins] = useState({ equipped: 'trex', availableSkins: ['trex'] });
   const [gameOverCounter, setGameOverCounter] = useState(
     localStorage.getItem("gameOverCounter") || 0
   );
@@ -27,7 +28,7 @@ function App() {
 
   return (
     <GameOverContext.Provider
-      value={{ gameOverCounter, setGameOverCounter, highScore, setHighScore }}
+      value={{ gameOverCounter, setGameOverCounter, highScore, setHighScore, userSkins, setUserSkins }}
     >
       <Router>
         <Routes>

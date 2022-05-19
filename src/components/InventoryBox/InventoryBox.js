@@ -1,22 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./InventoryBox.module.css";
 
-function InventoryBox() {
-  const InitialText = "Equip";
-  const [text, setText] = useState(InitialText);
-
-  const handleClick = () => {
-    setText("Equipped");
-    setTimeout(() => {
-      setText(InitialText);
-    }, 2000);
-  };
-
+function InventoryBox({ equipped, image, skin, equipSkin }) {
   return (
     <div className={styles.container}>
-      <button onClick={handleClick} className={styles.button}>
-        {text}
-      </button>
+      <img className={styles.image} src={image} />
+      <span className={styles.text}>{skin}</span>
+      {!equipped &&
+        <button onClick={() => equipSkin(skin)} className={styles.button}>
+          Equip skin
+        </button>}
     </div>
   );
 }
