@@ -72,45 +72,11 @@ class DistanceMeter extends React.Component {
     this.canvasCtx.restore()
   }
 
-  drawHi(x, y) {
-    const sourceY = 0
-    this.canvasCtx.save()
-    this.canvasCtx.globalAlpha = 0.8
-    for (let i = 10; i < 11; i++) {
-      const sourceX = this.config.DIGIT_WIDTH * i
-      this.canvasCtx.drawImage(
-        this.img,
-        sourceX,
-        sourceY,
-        this.config.DIGIT_WIDTH * 2,
-        this.config.DIGIT_HEIGHT,
-        x,
-        y,
-        this.config.DIGIT_WIDTH * 2,
-        this.config.DIGIT_HEIGHT
-      )
-    }
-    this.canvasCtx.restore()
-  }
-
-  drawHightestScore(score, x = 0, y = 0) {
-    this.drawHi(x, y)
-    this.drawScore(score, x + 2 * this.config.DIGIT_DEST_WIDTH, y)
-  }
-
   draw() {
     if (this.score.toString().length > this.config.MAX_DISTANCE_UNITS) {
       this.score = 10 ** this.config.MAX_DISTANCE_UNITS - 1
     }
-    const scoreWidth = this.config.DIGIT_DEST_WIDTH * this.config.MAX_DISTANCE_UNITS
-    const highestScoreWidth = scoreWidth + this.config.DIGIT_DEST_WIDTH * 2
-    if (this.highestScore > 0) {
-      this.drawHightestScore(
-        this.highestScore,
-        this.canvas.width - (highestScoreWidth + scoreWidth + this.config.DIGIT_DEST_WIDTH),
-        this.config.Y_POS
-      )
-    }
+    const scoreWidth = this.config.DIGIT_DEST_WIDTH * this.config.MAX_DISTANCE_UNITS;
     this.drawScore(this.score, this.canvas.width - scoreWidth, this.config.Y_POS)
   }
 

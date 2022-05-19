@@ -69,6 +69,7 @@ class Runner extends React.Component {
     this.setCoins = gameContext.setCoins;
     this.coins = gameContext.coins;
     this.skin = gameContext.userSkins.equipped;
+    this.setStatus = gameContext.setStatus;
   }
 
   async init() {
@@ -78,7 +79,7 @@ class Runner extends React.Component {
       console.error("Cannot load Images");
     }
 
-    const { ID, WIDTH, HEIGHT, INIT_SPEED } = this.config;
+    const { WIDTH, HEIGHT, INIT_SPEED } = this.config;
     this.canvas = document.createElement("canvas");
     // ID && (this.canvas.id = ID)
 
@@ -109,10 +110,12 @@ class Runner extends React.Component {
 
   onKeyDown(e) {
     const { code } = e;
-    console.log(code);
     switch (code) {
       case this.config.KEYCODE_JUMP:
       case this.config.KEYCODE_UP:
+        if (this.status === STATUS.START) {
+          this.setStatus("RUNNING");
+        }
         if (
           this.status !== STATUS.RUNNING &&
           performance.now() - this.restartLock > 500
