@@ -1,8 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import HomePage from "./pages/Homepage/Homepage";
 import Store from "./pages/Store/Store";
 import Achievements from "./pages/Achievements/Achievements";
 import Play from "./pages/Play/Play";
+import Inventory from "./pages/Inventory/Inventory";
+
 import { GameOverContext } from "./hooks/gameOverContext";
 import { useEffect, useState } from "react";
 
@@ -32,6 +35,7 @@ function App() {
           <Route path="store" element={<Store />} />
           <Route path="achievements" element={<Achievements />} />
           <Route path="play" element={<Play />} />
+          <Route path="inventory" element={<Inventory />} />
         </Routes>
       </Router>
     </GameOverContext.Provider>

@@ -1,0 +1,45 @@
+.title {
+  font-family: arial;
+  font-size: 30px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.text {
+  font-family: "Times New Roman", Times, serif;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-size: 20px;
+}
+
+.container {
+  border: 5px solid rgba(255, 255, 255, 0.6);
+  background: linear-gradient(to left top, white, black) fixed;
+  border-radius: 10px;
+  width: 900px;
+  height: auto;
+  margin: 10px 0px;
+}
+
+.image {
+  width: 10%;
+  height: 70px;
+  float: left;
+  margin-bottom: 5px;
+}
+
+.button {
+  background: linear-gradient(to left top, green, white) fixed;
+  border: 5px solid rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  float: right;
+  height: auto;
+  width: auto;
+  margin-bottom: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
