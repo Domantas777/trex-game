@@ -12,6 +12,7 @@ import defaultSonic from '../../assets/sonic_standing.png'
 import sonicStep1 from '../../assets/sonic_step_1.png'
 import sonicStep2 from '../../assets/sonic_step_2.png'
 import jumpSound from './sounds/button-press.mp3'
+import coinHitSound from './sounds/coin-hit.mp3'
 import hitSound from './sounds/hit.mp3'
 
 const getSkinSettings = skin => {
@@ -62,6 +63,7 @@ class Trex extends Sprite {
   groundY;
   status;
   duckTime = 0;
+  coins = 0;
   audioMap = new Map();
 
   config = {
@@ -75,6 +77,7 @@ class Trex extends Sprite {
     SOUNDS: {
       JUMP: jumpSound,
       HIT: hitSound,
+      COIN: coinHitSound
     },
   }
 
@@ -153,6 +156,10 @@ class Trex extends Sprite {
     // landing
     this.jumpVelocity = -1 * Math.abs(this.jumpVelocity)
     this.playSound(this.config.SOUNDS.HIT)
+  }
+
+  collectCoin() {
+    this.playSound(this.config.SOUNDS.COIN)
   }
 
   start() {

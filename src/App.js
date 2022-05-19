@@ -11,25 +11,22 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [userSkins, setUserSkins] = useState({ equipped: 'trex', availableSkins: ['trex'] });
-  const [gameOverCounter, setGameOverCounter] = useState(
-    localStorage.getItem("gameOverCounter") || 0
-  );
-  const [highScore, setHighScore] = useState(
-    localStorage.getItem("highScore", 0) || 0
-  );
+  const [gameOverCounter, setGameOverCounter] = useState(localStorage.getItem("gameOverCounter") || 0);
+  const [highScore, setHighScore] = useState(localStorage.getItem("highScore") || 0);
+  const [coins, setCoins] = useState(localStorage.getItem("coins") || 0);
 
   useEffect(() => {
     localStorage.setItem("gameOverCounter", gameOverCounter);
   }, [gameOverCounter]);
-
   useEffect(() => {
     localStorage.setItem("highScore", highScore);
   }, [highScore]);
+  useEffect(() => {
+    localStorage.setItem("coins", coins);
+  }, [coins]);
 
   return (
-    <GameOverContext.Provider
-      value={{ gameOverCounter, setGameOverCounter, highScore, setHighScore, userSkins, setUserSkins }}
-    >
+    <GameOverContext.Provider value={{ gameOverCounter, setGameOverCounter, highScore, setHighScore, coins, setCoins, userSkins, setUserSkins }}>
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />

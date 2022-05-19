@@ -1,4 +1,5 @@
 import * as React from "react";
+import CoinManager from "./coinManager";
 import CloudManager from "./cloudManager";
 import DistanceMeter from "./distanceMeter";
 import getImg, { loadImages } from "./getImage";
@@ -19,6 +20,7 @@ class Runner extends React.Component {
   canvas;
   canvasCtx;
   cloudManager;
+  coinManager;
   groundManager;
   distanceMeter;
   tRex;
@@ -54,17 +56,19 @@ class Runner extends React.Component {
   setGameOverCounter;
   setHighScore;
 
-  constructor(container, options, gameOverContext) {
+  constructor(container, options, gameContext) {
     super(container, options);
     this.outerContainerEl = container;
     this.config = {
       ...this.config,
       ...options,
     };
-    this.setGameOverCounter = gameOverContext.setGameOverCounter;
-    this.gameOverCounter = gameOverContext.gameOverCounter;
-    this.setHighScore = gameOverContext.setHighScore;
-    this.skin = gameOverContext.userSkins.equipped;
+    this.setGameOverCounter = gameContext.setGameOverCounter;
+    this.gameOverCounter = gameContext.gameOverCounter;
+    this.setHighScore = gameContext.setHighScore;
+    this.setCoins = gameContext.setCoins;
+    this.coins = gameContext.coins;
+    this.skin = gameContext.userSkins.equipped;
   }
 
   async init() {
@@ -87,6 +91,7 @@ class Runner extends React.Component {
     this.drawBackGround();
 
     this.cloudManager = new CloudManager(this.canvas);
+    this.coinManager = new CoinManager(this.canvas);
     this.groundManager = new GroundManager(this.canvas);
     this.distanceMeter = new DistanceMeter(this.canvas);
 
@@ -148,12 +153,20 @@ class Runner extends React.Component {
       // draw
       this.drawBackGround();
       this.cloudManager.update(deltaTime, this.currentSpeed);
+      this.coinManager.update(deltaTime, this.currentSpeed);
       this.groundManager.update(deltaTime, this.currentSpeed);
       // check collision
       if (this.checkCollision()) {
         this.gameOver();
         this.tRex.draw(); // update
         return;
+      }
+      const hit = this.checkHit();
+      if (hit !== -1) {
+        this.tRex.collectCoin();
+        this.coins++;
+        this.setCoins(this.coins);
+        this.removeCoin(hit);
       }
       this.distanceMeter.update(this.distanceRan);
       this.tRex.update(deltaTime);
@@ -187,6 +200,17 @@ class Runner extends React.Component {
     );
   }
 
+  checkHit() {
+    return this.coinManager.coinList.findIndex((coin) =>
+      coin.isOverlap(this.tRex)
+    );
+  }
+
+  removeCoin(index) {
+    this.coinManager.coinList[index].remove = true;
+    this.coinManager.lastCoin = null;
+  }
+
   restart() {
     this.distanceRan = 0;
     this.currentSpeed = this.config.INIT_SPEED;
@@ -198,6 +222,7 @@ class Runner extends React.Component {
       this.tRex.start();
     }
     this.cloudManager.reset();
+    this.coinManager.reset();
     this.groundManager.reset();
     this.status = STATUS.RUNNING;
     this.update();

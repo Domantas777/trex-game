@@ -1,6 +1,7 @@
 import cactusLargeImg from '../../assets/cactus_large.png'
 import cactusSmallImg from '../../assets/cactus_small.png'
 import cloudImg from '../../assets/cloud.png'
+import coinImg from '../../assets/coin.png'
 import gameoverTextImg from '../../assets/gameover_text.png'
 import groundImg from '../../assets/ground.png'
 import restartButtonImg from '../../assets/restart_button.png'
@@ -19,6 +20,7 @@ import tRexFistFrameImg from '../../assets/trex_first_frame.png'
 
 const imageArray = [
   cloudImg,
+  coinImg,
   tRexImg,
   defaultMario,
   marioStep1,

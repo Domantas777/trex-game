@@ -25,8 +25,7 @@ class Obstacle extends Sprite {
         'options \'Y_POS\' and \'GROUND_HEIGHT\' exist simultaneously'
       )
     }
-    this.groundY =
-      this.canvas.height - this.img.height - this.config.GROUND_HEIGHT
+    this.groundY = this.canvas.height - this.img.height - this.config.GROUND_HEIGHT;
     this.yPos = this.config.Y_POS || this.groundY
   }
 
