@@ -64,10 +64,10 @@ class Sprite extends React.Component {
 
   isOverlap(sprite) {
     return (
-      this.xPos < sprite.xPos + sprite.img.width &&
-      this.xPos + this.img.width > sprite.xPos &&
-      this.yPos < sprite.yPos + sprite.img.height &&
-      this.yPos + this.img.height > sprite.yPos
+      this.xPos < sprite.xPos + sprite.img.width - 5 &&
+      this.xPos + this.img.width + 5 > sprite.xPos &&
+      this.yPos < sprite.yPos + sprite.img.height - 5 &&
+      this.yPos + this.img.height + 5 > sprite.yPos
     )
   }
 }

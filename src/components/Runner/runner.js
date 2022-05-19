@@ -30,6 +30,7 @@ class Runner extends React.Component {
   distanceRan = 0;
   restartLock = -1;
   gameOverCounter = 0;
+  skin = "trex";
 
   config = {
     ID: "",
@@ -63,6 +64,7 @@ class Runner extends React.Component {
     this.setGameOverCounter = gameOverContext.setGameOverCounter;
     this.gameOverCounter = gameOverContext.gameOverCounter;
     this.setHighScore = gameOverContext.setHighScore;
+    this.skin = gameOverContext.userSkins.equipped;
   }
 
   async init() {
@@ -88,7 +90,7 @@ class Runner extends React.Component {
     this.groundManager = new GroundManager(this.canvas);
     this.distanceMeter = new DistanceMeter(this.canvas);
 
-    this.tRex = new Trex(this.canvas);
+    this.tRex = new Trex(this.canvas, { skin: this.skin });
     this.tRex.draw(); // first frame
 
     this.outerContainerEl.appendChild(this.canvas);

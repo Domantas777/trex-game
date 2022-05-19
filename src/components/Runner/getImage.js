@@ -9,11 +9,23 @@ import tRexImg from '../../assets/tRex.png'
 import tRexCrashImg from '../../assets/trex_crash.png'
 import tRexDuck1Img from '../../assets/trex_duck_1.png'
 import tRexDuck2Img from '../../assets/trex_duck_2.png'
+import defaultMario from '../../assets/mario_standing.png'
+import marioStep1 from '../../assets/mario_step_1.png'
+import marioStep2 from '../../assets/mario_step_2.png'
+import defaultSonic from '../../assets/sonic_standing.png'
+import sonicStep1 from '../../assets/sonic_step_1.png'
+import sonicStep2 from '../../assets/sonic_step_2.png'
 import tRexFistFrameImg from '../../assets/trex_first_frame.png'
 
 const imageArray = [
   cloudImg,
   tRexImg,
+  defaultMario,
+  marioStep1,
+  marioStep2,
+  defaultSonic,
+  sonicStep1,
+  sonicStep2,
   tRexFistFrameImg,
   groundImg,
   cactusSmallImg,
