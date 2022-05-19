@@ -1,16 +1,12 @@
 import { Link } from "react-router-dom";
 import styles from "./Homepage.module.css";
-import trex from '../../assets/tRex.png';
+import trex from "../../assets/tRex.png";
 
 function HomePage() {
   return (
     <div className={styles.container}>
       <div>
-        <img
-          className={styles.image}
-          src={trex}
-          alt="t-rex"
-        ></img>
+        <img className={styles.image} src={trex} alt="t-rex"></img>
         <span className={styles.title}>T-Rex Game</span>
       </div>
 
@@ -23,6 +19,9 @@ function HomePage() {
         </Link>
         <Link className={styles.button} to="/achievements">
           Achievements
+        </Link>
+        <Link className={styles.button} to="/inventory">
+          Inventory
         </Link>
       </div>
     </div>

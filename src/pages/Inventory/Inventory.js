@@ -1,22 +1,21 @@
-import styles from "./Store.module.css";
 import React, { useContext } from "react";
 import { GameOverContext } from "../../hooks/gameOverContext";
-import StoreBox from "../../components/StoreBox/StoreBox";
 import mario from "../../assets/mario.png";
 import trex from "../../assets/tRex.png";
+import styles from "./Inventory.module.css";
 import GoBackButton from "../../components/GoBackButton/GoBackButton";
+import InventoryBox from "../../components/InventoryBox/InventoryBox";
 
-function Store() {
+function Inventory() {
   const gameOver = useContext(GameOverContext);
-  const skins = ["trex", "mario", "sonic"];
   const images = { trex, mario };
   return (
     <div>
       <div className={styles.container}>
-        <span className={styles.title}>Store</span>
+        <span className={styles.title}>Inventory</span>
         <div className={styles.box}>
-          {skins.map((skin) => gameOver.userSkins.availableSkins.indexOf(skin) === -1 && (
-            <StoreBox key={skin} title="Skin" text={skin} image={images[skin]} />
+          {gameOver.userSkins.availableSkins.map(skin => (
+            <InventoryBox key={skin} skin={skin} image={images[skin]} equipped={gameOver.userSkins.equipped === skin} />
           ))}
         </div>
       </div>
@@ -25,4 +24,4 @@ function Store() {
   );
 }
 
-export default Store;
+export default Inventory;

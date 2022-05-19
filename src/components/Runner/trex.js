@@ -5,10 +5,51 @@ import tRexCrashImg from '../../assets/trex_crash.png'
 import tRexDuck1Img from '../../assets/trex_duck_1.png'
 import tRexDuck2Img from '../../assets/trex_duck_2.png'
 import tRexFistFrameImg from '../../assets/trex_first_frame.png'
+import defaultMario from '../../assets/mario_standing.png'
+import marioStep1 from '../../assets/mario_step_1.png'
+import marioStep2 from '../../assets/mario_step_2.png'
+import defaultSonic from '../../assets/sonic_standing.png'
+import sonicStep1 from '../../assets/sonic_step_1.png'
+import sonicStep2 from '../../assets/sonic_step_2.png'
 import jumpSound from './sounds/button-press.mp3'
 import coinHitSound from './sounds/coin-hit.mp3'
 import hitSound from './sounds/hit.mp3'
 
+const getSkinSettings = skin => {
+  const images = {
+    trex: {
+      IMG_SRC: defaultTrexImg,
+      STATUS: {
+        START: { img: tRexFistFrameImg },
+        JUMP: { img: defaultTrexImg },
+        DUCK_1: { img: tRexDuck1Img },
+        DUCK_2: { img: tRexDuck2Img },
+        CRASH: { img: tRexCrashImg },
+      }
+    },
+    mario: {
+      IMG_SRC: defaultMario,
+      STATUS: {
+        START: { img: defaultMario },
+        JUMP: { img: defaultMario },
+        DUCK_1: { img: marioStep1 },
+        DUCK_2: { img: marioStep2 },
+        CRASH: { img: defaultMario },
+      }
+    },
+    sonic: {
+      IMG_SRC: defaultSonic,
+      STATUS: {
+        START: { img: defaultSonic },
+        JUMP: { img: defaultSonic },
+        DUCK_1: { img: defaultSonic },
+        DUCK_2: { img: sonicStep2 },
+        CRASH: { img: defaultSonic },
+      }
+    }
+  };
+  return images[skin];
+};
 const STATUS = Object.freeze({
   START: 'START',
   JUMP: 'JUMP',
@@ -26,14 +67,6 @@ class Trex extends Sprite {
   audioMap = new Map();
 
   config = {
-    IMG_SRC: defaultTrexImg,
-    STATUS: {
-      START: { img: tRexFistFrameImg },
-      JUMP: { img: defaultTrexImg },
-      DUCK_1: { img: tRexDuck1Img },
-      DUCK_2: { img: tRexDuck2Img },
-      CRASH: { img: tRexCrashImg },
-    },
     DUCK_INTERVAL: 0.1,
     X_POS: 20,
     Y_POS: 0,
@@ -54,13 +87,14 @@ class Trex extends Sprite {
     this.config = {
       ...this.config,
       ...options,
+      ...getSkinSettings(options.skin)
     }
     this.loadSounds()
     this.xPos = 0
     this.groundY =
       this.canvas.height - this.img.height - this.config.GROUND_HEIGHT
     this.yPos = this.config.Y_POS || this.groundY
-    this.status = STATUS.START
+    this.status = STATUS.START;
   }
 
   update(deltaTime = 1 / 16) {
