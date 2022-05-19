@@ -6,6 +6,7 @@ import tRexDuck1Img from '../../assets/trex_duck_1.png'
 import tRexDuck2Img from '../../assets/trex_duck_2.png'
 import tRexFistFrameImg from '../../assets/trex_first_frame.png'
 import jumpSound from './sounds/button-press.mp3'
+import coinHitSound from './sounds/coin-hit.mp3'
 import hitSound from './sounds/hit.mp3'
 
 const STATUS = Object.freeze({
@@ -21,6 +22,7 @@ class Trex extends Sprite {
   groundY;
   status;
   duckTime = 0;
+  coins = 0;
   audioMap = new Map();
 
   config = {
@@ -42,6 +44,7 @@ class Trex extends Sprite {
     SOUNDS: {
       JUMP: jumpSound,
       HIT: hitSound,
+      COIN: coinHitSound
     },
   }
 
@@ -119,6 +122,10 @@ class Trex extends Sprite {
     // landing
     this.jumpVelocity = -1 * Math.abs(this.jumpVelocity)
     this.playSound(this.config.SOUNDS.HIT)
+  }
+
+  collectCoin() {
+    this.playSound(this.config.SOUNDS.COIN)
   }
 
   start() {
