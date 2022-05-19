@@ -9,20 +9,11 @@ import { GameOverContext } from "../../hooks/gameOverContext";
 function Achievements() {
   const { gameOverCounter, setGameOverCounter, highScore, setHighScore } =
     useContext(GameOverContext);
-  console.log(gameOverCounter, highScore);
+
   return (
     <div className={styles.container}>
       <span className={styles.title}>Achievements</span>
       <div className={styles.box}>
-        {/* <AchievementsBox
-          title="Newbie"
-          text="Play the game 1 times"
-          image={
-            gameOverCounter >= 1
-              ? "https://cdn-icons-png.flaticon.com/512/47/47799.png?w=360"
-              : "https://cdn3.iconfinder.com/data/icons/symbol-black-common-2/32/star-lock-512.png"
-          }
-        /> */}
         {gameOverCounter >= 1 ? (
           <AchievementsBox
             title="Newbie"

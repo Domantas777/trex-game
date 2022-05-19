@@ -4,13 +4,28 @@ import Store from "./pages/Store/Store";
 import Achievements from "./pages/Achievements/Achievements";
 import Play from "./pages/Play/Play";
 import { GameOverContext } from "./hooks/gameOverContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
-  const [gameOverCounter, setGameOverCounter] = useState(0);
-  const [highScore, setHighScore] = useState(0);
+  const [gameOverCounter, setGameOverCounter] = useState(
+    localStorage.getItem("gameOverCounter") || 0
+  );
+  const [highScore, setHighScore] = useState(
+    localStorage.getItem("highScore", 0) || 0
+  );
+
+  useEffect(() => {
+    localStorage.setItem("gameOverCounter", gameOverCounter);
+  }, [gameOverCounter]);
+
+  useEffect(() => {
+    localStorage.setItem("highScore", highScore);
+  }, [highScore]);
+
   return (
-    <GameOverContext.Provider value={{ gameOverCounter, setGameOverCounter, highScore, setHighScore }}>
+    <GameOverContext.Provider
+      value={{ gameOverCounter, setGameOverCounter, highScore, setHighScore }}
+    >
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />

@@ -28,9 +28,8 @@
 .image {
   width: 10%;
   height: 70px;
-  justify-content: left;
-  display: flex;
-  flex-direction: column;
+  float: left;
+  margin-bottom: 5px;
 }
 
 .button {
@@ -42,4 +41,5 @@
   width: auto;
   margin-bottom: 5px;
   margin-right: 5px;
+  cursor: pointer;
 }
