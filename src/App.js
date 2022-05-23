@@ -7,12 +7,26 @@ import Play from "./pages/Play/Play";
 import Inventory from "./pages/Inventory/Inventory";
 
 import { GameOverContext } from "./hooks/gameOverContext";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 function App() {
-  const [userSkins, setUserSkins] = useState({ equipped: 'trex', availableSkins: ['trex'] });
-  const [gameOverCounter, setGameOverCounter] = useState(localStorage.getItem("gameOverCounter") || 0);
-  const [highScore, setHighScore] = useState(localStorage.getItem("highScore") || 0);
+  if (localStorage.getItem("availableSkins") === null) {
+    localStorage.setItem("availableSkins", '["trex"]');
+  }
+  if (localStorage.getItem("equipped") === null) {
+    localStorage.setItem("equipped", "trex");
+  }
+  const [userSkins, setUserSkins] = useState({
+    equipped: localStorage.getItem("equipped"),
+    availableSkins: JSON.parse(localStorage.getItem("availableSkins")),
+  });
+
+  const [gameOverCounter, setGameOverCounter] = useState(
+    localStorage.getItem("gameOverCounter") || 0
+  );
+  const [highScore, setHighScore] = useState(
+    localStorage.getItem("highScore") || 0
+  );
   const [coins, setCoins] = useState(localStorage.getItem("coins") || 0);
 
   useEffect(() => {
@@ -26,7 +40,18 @@ function App() {
   }, [coins]);
 
   return (
-    <GameOverContext.Provider value={{ gameOverCounter, setGameOverCounter, highScore, setHighScore, coins, setCoins, userSkins, setUserSkins }}>
+    <GameOverContext.Provider
+      value={{
+        gameOverCounter,
+        setGameOverCounter,
+        highScore,
+        setHighScore,
+        coins,
+        setCoins,
+        userSkins,
+        setUserSkins,
+      }}
+    >
       <Router>
         <Routes>
           <Route path="/" element={<HomePage />} />
