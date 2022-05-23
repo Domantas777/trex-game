@@ -6,15 +6,17 @@ function StoreBox({ title, image, text }) {
   const gameOver = useContext(GameOverContext);
 
   const handleClick = (e) => {
-    const newCoins = gameOver.coins - 50;
-    gameOver.setCoins(newCoins);
-    gameOver.setUserSkins({
-      ...gameOver.userSkins,
-      availableSkins: [
-        ...gameOver.userSkins.availableSkins,
-        title.toLowerCase(),
-      ],
-    });
+    if (gameOver.coins >= 49) {
+      const newCoins = gameOver.coins - 50;
+      gameOver.setCoins(newCoins);
+      gameOver.setUserSkins({
+        ...gameOver.userSkins,
+        availableSkins: [
+          ...gameOver.userSkins.availableSkins,
+          title.toLowerCase(),
+        ],
+      });
+    }
   };
   return (
     <div className={styles.container}>
