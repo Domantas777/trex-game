@@ -6,6 +6,7 @@ function GoBackButton() {
   const history = useNavigate();
   const handleClick = () => {
     history("/");
+    window.location.reload(false);
   };
   return (
     <div>

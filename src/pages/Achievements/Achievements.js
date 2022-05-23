@@ -8,15 +8,15 @@ import { GameOverContext } from "../../hooks/gameOverContext";
 import GoBackButton from "../../components/GoBackButton/GoBackButton";
 
 function Achievements() {
-  const { gameOverCounter, setGameOverCounter, highScore, setHighScore } =
-    useContext(GameOverContext);
+  const gameOver = useContext(GameOverContext);
+  console.log(gameOver.userSkins.availableSkins);
 
   return (
     <div>
       <div className={styles.container}>
         <span className={styles.title}>Achievements</span>
         <div className={styles.box}>
-          {gameOverCounter >= 1 ? (
+          {gameOver.gameOverCounter >= 1 ? (
             <AchievementsBox
               title="Newbie"
               text="Play the game for the first time"
@@ -29,7 +29,7 @@ function Achievements() {
               image={AchievementLocked}
             />
           )}
-          {gameOverCounter >= 5 ? (
+          {gameOver.gameOverCounter >= 5 ? (
             <AchievementsBox
               title="Advanced"
               text="Play the game 5 times"
@@ -42,7 +42,7 @@ function Achievements() {
               image={AchievementLocked}
             />
           )}
-          {gameOverCounter >= 10 ? (
+          {gameOver.gameOverCounter >= 10 ? (
             <AchievementsBox
               title="Pro"
               text="Play the game 10 times"
@@ -55,7 +55,7 @@ function Achievements() {
               image={AchievementLocked}
             />
           )}
-          {highScore >= 1000 ? (
+          {gameOver.highScore >= 1000 ? (
             <AchievementsBox
               title="Keep it up!"
               text="Get a high score of 1000"
@@ -68,7 +68,7 @@ function Achievements() {
               image={AchievementLocked}
             />
           )}
-          {highScore >= 2000 ? (
+          {gameOver.highScore >= 2000 ? (
             <AchievementsBox
               title="You're nearly there!"
               text="Get a high score of 2000"
@@ -81,7 +81,7 @@ function Achievements() {
               image={AchievementLocked}
             />
           )}
-          {highScore >= 3000 ? (
+          {gameOver.highScore >= 3000 ? (
             <AchievementsBox
               title="Professional runner"
               text="Get a high score of 3000"
