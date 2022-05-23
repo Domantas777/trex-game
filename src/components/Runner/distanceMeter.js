@@ -8,6 +8,7 @@ class DistanceMeter extends React.Component {
   get canvasCtx() {
     return this.canvas.getContext("2d");
   }
+
   score = 0;
   img;
   highestScore;

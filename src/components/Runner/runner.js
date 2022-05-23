@@ -90,12 +90,12 @@ class Runner extends React.Component {
     this.canvasCtx = this.canvas.getContext("2d");
     this.currentSpeed = INIT_SPEED;
 
-    // 배경 그리기
     this.drawBackGround();
 
     this.cloudManager = new CloudManager(this.canvas);
     this.coinManager = new CoinManager(this.canvas);
     this.groundManager = new GroundManager(this.canvas);
+
     this.distanceMeter = new DistanceMeter(this.canvas, {
       highestScore: this.highScore,
     });
