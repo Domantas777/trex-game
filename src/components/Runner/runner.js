@@ -55,6 +55,7 @@ class Runner extends React.Component {
 
   setGameOverCounter;
   setHighScore;
+  highScore;
 
   constructor(container, options, gameContext) {
     super(container, options);
@@ -66,6 +67,7 @@ class Runner extends React.Component {
     this.setGameOverCounter = gameContext.setGameOverCounter;
     this.gameOverCounter = gameContext.gameOverCounter;
     this.setHighScore = gameContext.setHighScore;
+    this.highScore = gameContext.highScore;
     this.setCoins = gameContext.setCoins;
     this.coins = gameContext.coins;
     this.skin = gameContext.userSkins.equipped;
@@ -94,7 +96,7 @@ class Runner extends React.Component {
     this.cloudManager = new CloudManager(this.canvas);
     this.coinManager = new CoinManager(this.canvas);
     this.groundManager = new GroundManager(this.canvas);
-    this.distanceMeter = new DistanceMeter(this.canvas);
+    this.distanceMeter = new DistanceMeter(this.canvas, { highestScore: this.highScore });
 
     this.tRex = new Trex(this.canvas, { skin: this.skin });
     this.tRex.draw(); // first frame

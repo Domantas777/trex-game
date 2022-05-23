@@ -8,9 +8,9 @@ class DistanceMeter extends React.Component {
   get canvasCtx() {
     return this.canvas.getContext('2d')
   }
-  highestScore = 0;
   score = 0
   img;
+  highestScore;
 
   config = {
     IMG_SRC: scoreNumberImg,
@@ -30,6 +30,7 @@ class DistanceMeter extends React.Component {
       ...options,
     }
     this.img = loadImg(this.config.IMG_SRC)
+    this.highestScore = options.highestScore;
   }
 
   update(num) {
