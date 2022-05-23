@@ -1,16 +1,16 @@
-import * as React from 'react'
-import loadImg from './getImage'
+import * as React from "react";
+import loadImg from "./getImage";
 
-import scoreNumberImg from '../../assets/score_number.png'
+import scoreNumberImg from "../../assets/score_number.png";
 
 class DistanceMeter extends React.Component {
   canvas;
   get canvasCtx() {
-    return this.canvas.getContext('2d')
+    return this.canvas.getContext("2d");
   }
-  highestScore = 0;
-  score = 0
+  score = 0;
   img;
+  highestScore;
 
   config = {
     IMG_SRC: scoreNumberImg,
@@ -20,21 +20,22 @@ class DistanceMeter extends React.Component {
     DIGIT_HEIGHT: 13,
     DIGIT_DEST_WIDTH: 11,
     Y_POS: 0,
-  }
+  };
 
   constructor(canvas, options = {}) {
-    super(canvas, options)
-    this.canvas = canvas
+    super(canvas, options);
+    this.canvas = canvas;
     this.config = {
       ...this.config,
       ...options,
-    }
-    this.img = loadImg(this.config.IMG_SRC)
+    };
+    this.img = loadImg(this.config.IMG_SRC);
+    this.highestScore = options.highestScore;
   }
 
   update(num) {
-    this.score = Math.floor(num * this.config.RATIO)
-    this.draw()
+    this.score = Math.floor(num * this.config.RATIO);
+    this.draw();
   }
 
   updateHighScore(setHighScore) {
@@ -48,15 +49,15 @@ class DistanceMeter extends React.Component {
   drawScore(score = 0, x = 0, y = 0) {
     const scoreStr = score
       .toString()
-      .padStart(this.config.MAX_DISTANCE_UNITS, '0')
-    const sourceY = 0
+      .padStart(this.config.MAX_DISTANCE_UNITS, "0");
+    const sourceY = 0;
 
-    this.canvasCtx.save()
-    this.canvasCtx.globalAlpha = 0.8
+    this.canvasCtx.save();
+    this.canvasCtx.globalAlpha = 0.8;
     for (let i = 0; i < scoreStr.length; i++) {
-      const c = scoreStr[i]
-      const val = Number.parseInt(c, 10)
-      const sourceX = this.config.DIGIT_WIDTH * val
+      const c = scoreStr[i];
+      const val = Number.parseInt(c, 10);
+      const sourceX = this.config.DIGIT_WIDTH * val;
       this.canvasCtx.drawImage(
         this.img,
         sourceX,
@@ -67,22 +68,27 @@ class DistanceMeter extends React.Component {
         y,
         this.config.DIGIT_WIDTH,
         this.config.DIGIT_HEIGHT
-      )
+      );
     }
-    this.canvasCtx.restore()
+    this.canvasCtx.restore();
   }
 
   draw() {
     if (this.score.toString().length > this.config.MAX_DISTANCE_UNITS) {
-      this.score = 10 ** this.config.MAX_DISTANCE_UNITS - 1
+      this.score = 10 ** this.config.MAX_DISTANCE_UNITS - 1;
     }
-    const scoreWidth = this.config.DIGIT_DEST_WIDTH * this.config.MAX_DISTANCE_UNITS;
-    this.drawScore(this.score, this.canvas.width - scoreWidth, this.config.Y_POS)
+    const scoreWidth =
+      this.config.DIGIT_DEST_WIDTH * this.config.MAX_DISTANCE_UNITS;
+    this.drawScore(
+      this.score,
+      this.canvas.width - scoreWidth,
+      this.config.Y_POS
+    );
   }
 
   reset() {
-    this.highestScore = 0
+    this.highestScore = 0;
   }
 }
 
-export default DistanceMeter
+export default DistanceMeter;
