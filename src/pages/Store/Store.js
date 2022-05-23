@@ -19,7 +19,7 @@ function Store() {
         <div className={styles.box}>
           {skins.map(
             (skin) =>
-              gameOver.userSkins.availableSkins[0].indexOf(skin) === -1 && (
+              gameOver.userSkins.availableSkins.indexOf(skin) === -1 && (
                 <StoreBox
                   key={skin}
                   title={skin.charAt(0).toUpperCase() + skin.slice(1)}
@@ -28,6 +28,8 @@ function Store() {
                 />
               )
           )}
+          {gameOver.userSkins.availableSkins.length === skins.length &&
+            "You have all the skins"}
         </div>
       </div>
       <GoBackButton />

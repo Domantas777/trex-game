@@ -10,16 +10,12 @@ import { GameOverContext } from "./hooks/gameOverContext";
 import { useEffect, useState, useContext } from "react";
 
 function App() {
-  if (localStorage.getItem("availableSkins") === null) {
-    localStorage.setItem("availableSkins", '["trex"]');
-  }
-  if (localStorage.getItem("equipped") === null) {
-    localStorage.setItem("equipped", "trex");
-  }
-  const [userSkins, setUserSkins] = useState({
-    equipped: localStorage.getItem("equipped"),
-    availableSkins: JSON.parse(localStorage.getItem("availableSkins")),
-  });
+  const [userSkins, setUserSkins] = useState(
+    JSON.parse(localStorage.getItem("userSkins")) || {
+      equipped: "trex",
+      availableSkins: ["trex"],
+    }
+  );
 
   const [gameOverCounter, setGameOverCounter] = useState(
     localStorage.getItem("gameOverCounter") || 0
@@ -38,6 +34,9 @@ function App() {
   useEffect(() => {
     localStorage.setItem("coins", coins);
   }, [coins]);
+  useEffect(() => {
+    localStorage.setItem("userSkins", JSON.stringify(userSkins));
+  }, [userSkins]);
 
   return (
     <GameOverContext.Provider

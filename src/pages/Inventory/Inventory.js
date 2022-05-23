@@ -10,7 +10,6 @@ import sonic from "../../assets/sonic_standing.png";
 function Inventory() {
   const gameOver = useContext(GameOverContext);
   const images = { trex, mario, sonic };
-  console.log(gameOver.userSkins);
   return (
     <div>
       <div className={styles.container}>
